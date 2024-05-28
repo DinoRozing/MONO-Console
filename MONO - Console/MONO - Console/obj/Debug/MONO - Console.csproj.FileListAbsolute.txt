@@ -1,0 +1,7 @@
+C:\Users\dinor\Documents\MONO-Console\MONO - Console\MONO - Console\bin\Debug\MONO - Console.exe.config
+C:\Users\dinor\Documents\MONO-Console\MONO - Console\MONO - Console\bin\Debug\MONO - Console.exe
+C:\Users\dinor\Documents\MONO-Console\MONO - Console\MONO - Console\bin\Debug\MONO - Console.pdb
+C:\Users\dinor\Documents\MONO-Console\MONO - Console\MONO - Console\obj\Debug\MONO - Console.csproj.AssemblyReference.cache
+C:\Users\dinor\Documents\MONO-Console\MONO - Console\MONO - Console\obj\Debug\MONO - Console.csproj.CoreCompileInputs.cache
+C:\Users\dinor\Documents\MONO-Console\MONO - Console\MONO - Console\obj\Debug\MONO - Console.exe
+C:\Users\dinor\Documents\MONO-Console\MONO - Console\MONO - Console\obj\Debug\MONO - Console.pdb
