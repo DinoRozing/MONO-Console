@@ -5,6 +5,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{F52DD723-A5AC-4184-9D96-3BFE525D6414}|MONO - Console\\MONO - Console.csproj|c:\\users\\dinor\\documents\\mono-console\\mono - console\\mono - console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F52DD723-A5AC-4184-9D96-3BFE525D6414}|MONO - Console\\MONO - Console.csproj|solutionrelative:mono - console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F52DD723-A5AC-4184-9D96-3BFE525D6414}|MONO - Console\\MONO - Console.csproj|c:\\users\\dinor\\documents\\mono-console\\mono - console\\mono - console\\vehicles\\truck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F52DD723-A5AC-4184-9D96-3BFE525D6414}|MONO - Console\\MONO - Console.csproj|solutionrelative:mono - console\\vehicles\\truck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +18,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Truck.cs",
+              "DocumentMoniker": "C:\\Users\\dinor\\Documents\\MONO-Console\\MONO - Console\\MONO - Console\\Vehicles\\Truck.cs",
+              "RelativeDocumentMoniker": "MONO - Console\\Vehicles\\Truck.cs",
+              "ToolTip": "C:\\Users\\dinor\\Documents\\MONO-Console\\MONO - Console\\MONO - Console\\Vehicles\\Truck.cs",
+              "RelativeToolTip": "MONO - Console\\Vehicles\\Truck.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-28T21:07:38.596Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -24,7 +41,7 @@
               "RelativeDocumentMoniker": "MONO - Console\\Program.cs",
               "ToolTip": "C:\\Users\\dinor\\Documents\\MONO-Console\\MONO - Console\\MONO - Console\\Program.cs",
               "RelativeToolTip": "MONO - Console\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADsAAAAYAAAA",
+              "ViewState": "AQIAAJ0AAAAAAAAAAAAcwLEAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-28T18:18:26.408Z",
               "EditorCaption": ""

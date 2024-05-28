@@ -11,19 +11,16 @@ namespace MONO___Console
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to the Vehicle Service Program!");
+            Console.WriteLine("Welcome to the Vehicle Service Program!\n");
 
-            // Display the question and options
-            Console.WriteLine("Which vehicle do you bring for service?");
+            Console.WriteLine("Which vehicle do you bring for service?\n");
             Console.WriteLine("1. Car");
             Console.WriteLine("2. Motorcycle");
             Console.WriteLine("3. Truck");
-            Console.WriteLine("4. Bus");
+            Console.WriteLine("4. Bus\n");
 
-            // Read the user's choice
             int userInput = GetValidChoice();
 
-            // Execute code based on the user's choice
             switch (userInput)
             {
                 case 1:
@@ -47,7 +44,6 @@ namespace MONO___Console
                     ServiceBus();
                     break;
                 default:
-                    // This default case should never be hit due to validation in GetValidChoice
                     Console.WriteLine("Invalid selection.");
                     Console.ReadKey();
                     break;
@@ -59,18 +55,15 @@ namespace MONO___Console
             int choice;
             while (true)
             {
-                // Prompt user for input
-                Console.Write("Enter the number of your choice: ");
+                Console.Write("Enter the number of your choice: \n");
                 string input = Console.ReadLine();
 
-                // Try to parse the input as an integer
                 if (int.TryParse(input, out choice) && choice >= 1 && choice <= 4)
                 {
-                    break; // Valid input, exit the loop
+                    break; 
                 }
                 else
                 {
-                    // Invalid input, prompt again
                     Console.WriteLine("Invalid selection. Please enter a number between 1 and 4.");
                 }
             }
@@ -79,7 +72,7 @@ namespace MONO___Console
 
         static void ServiceCar()
         {
-            Console.WriteLine("How many doors does your car have? (2 or 4):");
+            Console.WriteLine("\nHow many doors does your car have? (2 or 4):");
             string numberOfDoorsInput = Console.ReadLine();
             int numberOfDoors;
             if (!int.TryParse(numberOfDoorsInput, out numberOfDoors) || (numberOfDoors != 2 && numberOfDoors != 4))
@@ -88,7 +81,7 @@ namespace MONO___Console
                 return;
             }
 
-            Console.WriteLine("Servicing a car...");
+            Console.WriteLine("\nServicing a car...\n");
             Console.ReadKey();
 
             Car myCar = new Car("BMW", "F82 440i", "Black", 40000, 2017);
@@ -103,13 +96,13 @@ namespace MONO___Console
             myCar.Drive();
 
             Console.ReadKey();
-            Console.WriteLine("Your service is done.");
+            Console.WriteLine("\nYour service is done.");
             Console.ReadKey();
         }
 
         static void ServiceMotorcycle()
         {
-            Console.WriteLine("Does your motorcycle come with an aftermarket exhaust?");
+            Console.WriteLine("Does your motorcycle come with an aftermarket exhaust?\n");
             Console.WriteLine("1. Yes, it does.");
             Console.WriteLine("2. No, it doesn't.");
             Console.WriteLine("3. It doesn't even have an exhaust.");
@@ -128,7 +121,6 @@ namespace MONO___Console
                 return;
             }
 
-            // Continue with the motorcycle service for options 1 and 2
             if (HasCustomExhaust == 1)
             {
                 Console.WriteLine("Great! We will proceed with servicing your motorcycle with the aftermarket exhaust.");
@@ -138,7 +130,7 @@ namespace MONO___Console
                 Console.WriteLine("Alright! We will proceed with servicing your motorcycle without the aftermarket exhaust.");
             }
 
-            Console.WriteLine("Servicing a motorcycle...");
+            Console.WriteLine("\nServicing a motorcycle...");
 
             Motorcycle myMotorcycle = new Motorcycle("HONDA", "CB 500 FA", "Orange", 5000, 2017);
             myMotorcycle.DisplayInfo();
@@ -149,13 +141,13 @@ namespace MONO___Console
             myMotorcycle.Drive();
 
             Console.ReadKey();
-            Console.WriteLine("Your service is done.");
+            Console.WriteLine("\nYour service is done.");
             Console.ReadKey();
         }
 
         static void ServiceBus()
         {
-            Console.WriteLine("Servicing a bus...");
+            Console.WriteLine("\nServicing a bus...");
 
             Bus myBus = new Bus("Volvo", "XC90", "Blue", 60000, 2018);
             myBus.DisplayInfo();
@@ -166,13 +158,13 @@ namespace MONO___Console
             myBus.Drive();
 
             Console.ReadKey();
-            Console.WriteLine("Your service is done.");
+            Console.WriteLine("\nYour service is done.");
             Console.ReadKey();
         }
 
         static void ServiceTruck()
         {
-            Console.WriteLine("Servicing a truck...");
+            Console.WriteLine("\nServicing a truck...");
 
             Truck myTruck = new Truck("MAN", "TGS", "Red", 80000, 2019);
             myTruck.DisplayInfo();
@@ -183,7 +175,7 @@ namespace MONO___Console
             myTruck.Drive();
 
             Console.ReadKey();
-            Console.WriteLine("Your service is done.");
+            Console.WriteLine("\nYour service is done.");
             Console.ReadKey();
         }
     }
