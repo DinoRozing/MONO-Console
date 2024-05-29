@@ -9,21 +9,51 @@ namespace MONO___Console
 {
     public class Program
     {
+        static List<ServiceItem> serviceItems = new List<ServiceItem>();
+        static int nextId = 1;
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to the Vehicle Service Program!");
+            bool exit = false;
+            while (!exit)
+            {
+                Console.Clear();
+                Console.WriteLine("What would you like to do?\n");
+                Console.WriteLine("1. Vehicle Service Program");
+                Console.WriteLine("2. Buy Service Items");
+                Console.WriteLine("3. Exit");
 
-            // Display the question and options
-            Console.WriteLine("Which vehicle do you bring for service?");
+                switch (Console.ReadLine())
+                {
+                    case "1":
+                        VehicleServiceProgram();
+                        break;
+                    case "2":
+                        ManageServiceItems();
+                        break;
+                    case "3":
+                        exit = true;
+                        break;
+                    default:
+                        Console.WriteLine("\nInvalid choice, please try again.");
+                        break;
+                }
+            }
+        }
+
+        static void VehicleServiceProgram()
+        {
+            Console.Clear();
+            Console.WriteLine("Welcome to the Vehicle Service Program!\n");
+
+            Console.WriteLine("What vehicle are you bringing in for a service?\n");
             Console.WriteLine("1. Car");
             Console.WriteLine("2. Motorcycle");
             Console.WriteLine("3. Truck");
-            Console.WriteLine("4. Bus");
+            Console.WriteLine("4. Bus\n");
 
-            // Read the user's choice
-            int userInput = GetValidChoice();
+            int userInput = GetValidChoice(4);
 
-            // Execute code based on the user's choice
             switch (userInput)
             {
                 case 1:
@@ -47,31 +77,27 @@ namespace MONO___Console
                     ServiceBus();
                     break;
                 default:
-                    // This default case should never be hit due to validation in GetValidChoice
-                    Console.WriteLine("Invalid selection.");
+                    Console.WriteLine("\nInvalid selection.");
                     Console.ReadKey();
                     break;
             }
         }
 
-        static int GetValidChoice()
+        static int GetValidChoice(int maxChoice)
         {
             int choice;
             while (true)
             {
-                // Prompt user for input
-                Console.Write("Enter the number of your choice: ");
+                Console.Write("Enter the number of your choice: \n");
                 string input = Console.ReadLine();
 
-                // Try to parse the input as an integer
-                if (int.TryParse(input, out choice) && choice >= 1 && choice <= 4)
+                if (int.TryParse(input, out choice) && choice >= 1 && choice <= maxChoice)
                 {
-                    break; // Valid input, exit the loop
+                    break;
                 }
                 else
                 {
-                    // Invalid input, prompt again
-                    Console.WriteLine("Invalid selection. Please enter a number between 1 and 4.");
+                    Console.WriteLine($"\nInvalid selection. Please enter a number between 1 and {maxChoice}.");
                 }
             }
             return choice;
@@ -79,20 +105,22 @@ namespace MONO___Console
 
         static void ServiceCar()
         {
-            Console.WriteLine("How many doors does your car have? (2 or 4):");
+            Console.WriteLine("\nHow many doors does your car have? (2 or 4):");
             string numberOfDoorsInput = Console.ReadLine();
             int numberOfDoors;
             if (!int.TryParse(numberOfDoorsInput, out numberOfDoors) || (numberOfDoors != 2 && numberOfDoors != 4))
             {
-                Console.WriteLine("Invalid input! Please enter 2 or 4.");
+                Console.WriteLine("\nInvalid input! Please enter 2 or 4.");
                 return;
             }
 
-            Console.WriteLine("Servicing a car...");
+            Console.WriteLine("\nServicing a car...\n");
             Console.ReadKey();
 
-            Car myCar = new Car("BMW", "F82 440i", "Black", 40000, 2017);
-            myCar.NumberOfDoors = numberOfDoors;
+            Car myCar = new Car("BMW", "F82 440i", "Black", 40000, 2017)
+            {
+                NumberOfDoors = numberOfDoors
+            };
             myCar.DisplayInfo();
             myCar.StartEngine();
             myCar.StopEngine();
@@ -103,42 +131,36 @@ namespace MONO___Console
             myCar.Drive();
 
             Console.ReadKey();
-            Console.WriteLine("Your service is done.");
+            Console.WriteLine("\nYour service is done.");
             Console.ReadKey();
         }
 
         static void ServiceMotorcycle()
         {
-            Console.WriteLine("Does your motorcycle come with an aftermarket exhaust?");
+            Console.WriteLine("Does your motorcycle come with an aftermarket exhaust?\n");
             Console.WriteLine("1. Yes, it does.");
             Console.WriteLine("2. No, it doesn't.");
             Console.WriteLine("3. It doesn't even have an exhaust.");
 
-            string exhaustInput = Console.ReadLine();
-            int HasCustomExhaust;
-            if (!int.TryParse(exhaustInput, out HasCustomExhaust) || (HasCustomExhaust < 1 || HasCustomExhaust > 3))
+            int hasCustomExhaust = GetValidChoice(3);
+
+            if (hasCustomExhaust == 3)
             {
-                Console.WriteLine("Invalid input! Please enter a number between 1 and 3.");
+                Console.WriteLine("\nUnfortunately we can't perform a service on your vehicle due to the missing part.");
+                Console.ReadKey();
                 return;
             }
 
-            if (HasCustomExhaust == 3)
+            if (hasCustomExhaust == 1)
             {
-                Console.WriteLine("Unfortunately we can't perform a service on your vehicle due to the missing part.");
-                return;
+                Console.WriteLine("\nGreat! We will proceed with servicing your motorcycle with the aftermarket exhaust.");
+            }
+            else if (hasCustomExhaust == 2)
+            {
+                Console.WriteLine("\nAlright! We will proceed with servicing your motorcycle without the aftermarket exhaust.");
             }
 
-            // Continue with the motorcycle service for options 1 and 2
-            if (HasCustomExhaust == 1)
-            {
-                Console.WriteLine("Great! We will proceed with servicing your motorcycle with the aftermarket exhaust.");
-            }
-            else if (HasCustomExhaust == 2)
-            {
-                Console.WriteLine("Alright! We will proceed with servicing your motorcycle without the aftermarket exhaust.");
-            }
-
-            Console.WriteLine("Servicing a motorcycle...");
+            Console.WriteLine("\nServicing a motorcycle...");
 
             Motorcycle myMotorcycle = new Motorcycle("HONDA", "CB 500 FA", "Orange", 5000, 2017);
             myMotorcycle.DisplayInfo();
@@ -149,13 +171,13 @@ namespace MONO___Console
             myMotorcycle.Drive();
 
             Console.ReadKey();
-            Console.WriteLine("Your service is done.");
+            Console.WriteLine("\nYour service is done.");
             Console.ReadKey();
         }
 
         static void ServiceBus()
         {
-            Console.WriteLine("Servicing a bus...");
+            Console.WriteLine("\nServicing a bus...");
 
             Bus myBus = new Bus("Volvo", "XC90", "Blue", 60000, 2018);
             myBus.DisplayInfo();
@@ -166,13 +188,13 @@ namespace MONO___Console
             myBus.Drive();
 
             Console.ReadKey();
-            Console.WriteLine("Your service is done.");
+            Console.WriteLine("\nYour service is done.");
             Console.ReadKey();
         }
 
         static void ServiceTruck()
         {
-            Console.WriteLine("Servicing a truck...");
+            Console.WriteLine("\nServicing a truck...");
 
             Truck myTruck = new Truck("MAN", "TGS", "Red", 80000, 2019);
             myTruck.DisplayInfo();
@@ -183,7 +205,112 @@ namespace MONO___Console
             myTruck.Drive();
 
             Console.ReadKey();
-            Console.WriteLine("Your service is done.");
+            Console.WriteLine("\nYour service is done.");
+            Console.ReadKey();
+        }
+
+        static void ManageServiceItems()
+        {
+            bool exit = false;
+            while (!exit)
+            {
+                Console.Clear();
+                Console.WriteLine("Choose an option:\n");
+                Console.WriteLine("1. Buy items");
+                Console.WriteLine("2. Remove from cart");
+                Console.WriteLine("3. Update cart");
+                Console.WriteLine("4. View cart");
+                Console.WriteLine("5. Exit");
+
+                switch (Console.ReadLine())
+                {
+                    case "1":
+                        AddItem();
+                        break;
+                    case "2":
+                        RemoveItem();
+                        break;
+                    case "3":
+                        UpdateItem();
+                        break;
+                    case "4":
+                        ViewItems();
+                        break;
+                    case "5":
+                        exit = true;
+                        break;
+                    default:
+                        Console.WriteLine("\nInvalid choice, please try again.");
+                        break;
+                }
+            }
+        }
+
+        static void AddItem()
+        {
+            Console.Write("What would you like to purchase: ");
+            string name = Console.ReadLine();
+
+            ServiceItem newItem = new ServiceItem { Id = nextId++, Name = name };
+            serviceItems.Add(newItem);
+            Console.WriteLine("\nItem added successfully.");
+            Console.ReadKey();
+        }
+
+        static void RemoveItem()
+        {
+            Console.Write("Enter item Id to remove: ");
+            if (int.TryParse(Console.ReadLine(), out int id))
+            {
+                ServiceItem itemToRemove = serviceItems.Find(item => item.Id == id);
+                if (itemToRemove != null)
+                {
+                    serviceItems.Remove(itemToRemove);
+                    Console.WriteLine("\nItem removed successfully.");
+                }
+                else
+                {
+                    Console.WriteLine("\nItem not found.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("\nInvalid Id.");
+            }
+            Console.ReadKey();
+        }
+
+        static void UpdateItem()
+        {
+            Console.Write("Enter item Id to update: ");
+            if (int.TryParse(Console.ReadLine(), out int id))
+            {
+                ServiceItem itemToUpdate = serviceItems.Find(item => item.Id == id);
+                if (itemToUpdate != null)
+                {
+                    Console.Write("Enter new item name: ");
+                    itemToUpdate.Name = Console.ReadLine();
+                    Console.WriteLine("\nItem updated successfully.");
+                }
+                else
+                {
+                    Console.WriteLine("\nItem not found.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("\nInvalid Id.");
+            }
+            Console.ReadKey();
+        }
+
+        static void ViewItems()
+        {
+            Console.WriteLine("Your cart:");
+            foreach (var item in serviceItems)
+            {
+                Console.WriteLine($"ID: {item.Id}, Name: {item.Name}");
+            }
             Console.ReadKey();
         }
     }
